@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import './Navbar.css';
 
@@ -10,13 +10,33 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const handleLinkClick = (linkName) => {
+    const handleLinkClick = (linkName, event) => {
         setActiveLink(linkName);
         setIsMenuOpen(false); // Cerrar menú móvil al hacer clic
+
+        // Prevenir la navegación real para mantener el estado
+        event.preventDefault();
+
+        // Simular navegación sin recargar la página
+        window.history.pushState({}, '', linkName.toLowerCase() === 'home' ? '/' : `#${linkName.toLowerCase()}`);
     };
 
+    // Detectar la pestaña activa basada en la URL al cargar
+    useEffect(() => {
+        const path = window.location.pathname + window.location.hash;
+        if (path === '/' || path === '') {
+            setActiveLink('HOME');
+        } else if (path.includes('about')) {
+            setActiveLink('ABOUT');
+        } else if (path.includes('services')) {
+            setActiveLink('SERVICES');
+        } else if (path.includes('contact')) {
+            setActiveLink('CONTACT');
+        }
+    }, []);
+
     const navItems = [
-        { name: 'HOME', href: '/' },
+        { name: 'HOME', href: '#/' },
         { name: 'ABOUT', href: '/about' },
         { name: 'SERVICES', href: '#services' },
         { name: 'CONTACT', href: '#contact' }
@@ -28,7 +48,12 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="navbar-logo">
                     <div className="logo-icon">
-                        <img src="/logo.png" alt="Logo Cardan" width="40" height="40" />
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" rx="8" fill="#F59E0B" />
+                            <path d="M12 20h16M20 12v16" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                            <circle cx="16" cy="16" r="2" fill="white" />
+                            <circle cx="24" cy="24" r="2" fill="white" />
+                        </svg>
                     </div>
                     <div className="logo-text">
                         <h1>CARDAN</h1>
@@ -43,7 +68,7 @@ const Navbar = () => {
                             key={item.name}
                             href={item.href}
                             className={`nav-link ${activeLink === item.name ? 'active' : ''}`}
-                            onClick={() => handleLinkClick(item.name)}
+                            onClick={(e) => handleLinkClick(item.name, e)}
                         >
                             {item.name}
                         </a>
@@ -72,7 +97,7 @@ const Navbar = () => {
                         key={item.name}
                         href={item.href}
                         className={`mobile-nav-link ${activeLink === item.name ? 'active' : ''}`}
-                        onClick={() => handleLinkClick(item.name)}
+                        onClick={(e) => handleLinkClick(item.name, e)}
                     >
                         {item.name}
                     </a>

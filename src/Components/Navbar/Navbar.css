@@ -59,19 +59,6 @@
     letter-spacing: 0.5px;
     padding: 8px 0;
     position: relative;
-    transition: all 0.3s ease;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #F59E0B;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
 }
 
 .nav-link:hover {
@@ -80,10 +67,6 @@
 
 .nav-link.active {
     color: #F59E0B;
-}
-
-.nav-link.active::after {
-    transform: scaleX(1);
 }
 
 /* Botón de Contacto */
