@@ -26,9 +26,9 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 {/* Logo */}
-                <div className="navbar-logo">
+                <Link to="/" className="navbar-logo" onClick={() => setIsMenuOpen(false)}>
                     <img src="/public/logo.png" alt="CARDAN Logo" className="logo-img" />
-                </div>
+                </Link>
 
                 {/* Desktop Navigation */}
                 <div className="navbar-menu desktop-menu">
