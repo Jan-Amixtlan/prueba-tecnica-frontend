@@ -1,12 +1,12 @@
 import React from 'react';
-import { Play, CheckCircle, BarChart3 } from 'lucide-react';
+import { Play, CheckCircle2, Award, Users, Clock } from 'lucide-react';
 import './AboutSection.css';
 
 const AboutSection = () => {
     const features = [
         'Top rated excellent reviews from customers',
         'We provide new offers & promotions',
-        'Expert tecnicians always at service for vehicles',
+        'Expert technicians always at service for vehicles',
         'Get our lifetime guarantee service works',
         'Offering 1500+ services locations around USA'
     ];
@@ -14,66 +14,91 @@ const AboutSection = () => {
     return (
         <section className="about-section">
             <div className="about-container">
-                <div className="about-content">
 
-                    {/* Left Side - Images */}
-                    <div className="about-images">
-                        <div className="main-image">
-                            {/* Placeholder para imagen principal */}
-                            <div className="image-placeholder main-placeholder">
-                                <span>Main Image (680x400px)</span>
-                            </div>
-                            <button className="play-button">
-                                <Play size={24} fill="white" />
+                {/* Left Side - Images Grid */}
+                <div className="images-grid">
+                    <div className="main-image-container">
+                        <img
+                            src="https://static.nuso.org/media/cache/71/23/712391a16cf08a7a8758df642a8f7225.jpg"
+                            alt="Professional mechanic working on car engine in modern garage"
+                            className="main-image"
+                        />
+                        <div className="play-overlay">
+                            <button className="play-btn">
+                                <Play size={28} fill="white" />
                             </button>
-                        </div>
-
-                        <div className="secondary-images">
-                            <div className="stats-card">
-                                <BarChart3 className="stats-icon" size={32} />
-                                <div className="stats-number">27</div>
-                                <div className="stats-text">
-                                    <span className="years">Years of</span>
-                                    <span className="experience">Experience</span>
-                                </div>
-                                <div className="industry-text">Industry Business</div>
-                            </div>
-
-                            <div className="small-images">
-                                <div className="image-placeholder small-placeholder">
-                                    <span>Image 1 (200x150px)</span>
-                                </div>
-                                <div className="image-placeholder small-placeholder">
-                                    <span>Image 2 (200x150px)</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                    {/* Right Side - Content */}
-                    <div className="about-text">
-                        <div className="section-header">
-                            <span className="section-subtitle">About Cardan Repair Services</span>
-                            <h2 className="section-title">
-                                We're Committed To <span className="highlight">AutoRepair</span><br />
-                                Meets The Quality Standards
-                            </h2>
-                            <div className="title-divider"></div>
+                    <div className="stats-grid">
+                        <div className="experience-card">
+                            <Award className="card-icon" size={36} />
+                            <div className="big-number">27</div>
+                            <div className="card-text">
+                                <span>Years of</span>
+                                <span>Experience</span>
+                            </div>
+                            <div className="card-subtitle">Industry Leader</div>
                         </div>
 
-                        <p className="section-description">
-                            Kiusmod tempor incididunt ut labore sed dolore magnas aliquay enim ad
-                            minim veniam quis nostrud exercitation ullamco laboris nisut aliquip ex sed
-                            ipsum ea reprehen deritin voluptate.
-                        </p>
+                        <div className="secondary-images">
+                            <img
+                                src="https://static.nuso.org/media/cache/71/23/712391a16cf08a7a8758df642a8f7225.jpg"
+                                alt="Mechanic servicing vehicle suspension and maintenance"
+                                className="small-image"
+                            />
+                            <img
+                                src="https://static.nuso.org/media/cache/71/23/712391a16cf08a7a8758df642a8f7225.jpg"
+                                alt="Mechanic servicing vehicle suspension and maintenance"
+                                className="small-image"
+                            />
+                        </div>
+                    </div>
+                </div>
 
-                        <div className="features-list">
-                            {features.map((feature, index) => (
-                                <div key={index} className="feature-item">
-                                    <CheckCircle className="check-icon" size={20} />
-                                    <span>{feature}</span>
+                {/* Right Side - Content */}
+                <div className="content-area">
+                    <div className="content-header">
+                        <span className="badge">About Cardan Repair Services</span>
+                        <h2 className="main-title">
+                            We're Committed To
+                            <span className="highlight-text"> AutoRepair</span>
+                            <br />Meets The Quality Standards
+                        </h2>
+                        <div className="accent-line"></div>
+                    </div>
+
+                    <p className="description">
+                        Kiusmod tempor incididunt ut labore sed dolore magnas aliquay enim ad
+                        minim veniam quis nostrud exercitation ullamco laboris nisut aliquip ex sed
+                        ipsum ea reprehen deritin voluptate.
+                    </p>
+
+                    <div className="features-grid">
+                        {features.map((feature, index) => (
+                            <div key={index} className="feature-row">
+                                <div className="check-wrapper">
+                                    <CheckCircle2 size={18} />
                                 </div>
-                            ))}
+                                <span className="feature-text">{feature}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="stats-row">
+                        <div className="stat-item">
+                            <Users className="stat-icon" size={24} />
+                            <div className="stat-content">
+                                <div className="stat-number">15K+</div>
+                                <div className="stat-label">Happy Customers</div>
+                            </div>
+                        </div>
+                        <div className="stat-item">
+                            <Clock className="stat-icon" size={24} />
+                            <div className="stat-content">
+                                <div className="stat-number">24/7</div>
+                                <div className="stat-label">Support Available</div>
+                            </div>
                         </div>
                     </div>
                 </div>
