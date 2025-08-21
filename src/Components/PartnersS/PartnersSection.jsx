@@ -6,27 +6,27 @@ const PartnersSection = () => {
         {
             id: 1,
             name: "Partner 1",
-            img: "/src/assets/logosPartener/img-partner-1.png"
+            img: "https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/logosPartener/img-partner-1.png"
         },
         {
             id: 2,
             name: "Partner 2",
-            img: "/src/assets/logosPartener/img-partner-2.png"
+            img: "https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/logosPartener/img-partner-2.png"
         },
         {
             id: 3,
             name: "Partner 3",
-            img: "/src/assets/logosPartener/img-partner-3.png"
+            img: "https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/logosPartener/img-partner-3.png"
         },
         {
             id: 4,
             name: "Partner 4",
-            img: "/src/assets/logosPartener/img-partner-4.png"
+            img: "https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/logosPartener/img-partner-4.png"
         },
         {
             id: 5,
             name: "Partner 5",
-            img: "/src/assets/logosPartener/img-partner-5.png"
+            img: "https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/logosPartener/img-partner-5.png"
         }
     ];
 
