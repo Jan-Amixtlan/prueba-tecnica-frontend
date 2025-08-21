@@ -6,27 +6,27 @@ const PartnersSection = () => {
         {
             id: 1,
             name: "Partner 1",
-            placeholder: "Logo 1 (200x100px)"
+            img: require("../assets/logosPartener/img-partner-1.png")
         },
         {
             id: 2,
             name: "Partner 2",
-            placeholder: "Logo 2 (200x100px)"
+            img: require("../assets/logosPartener/img-partner-2.png")
         },
         {
             id: 3,
             name: "Partner 3",
-            placeholder: "Logo 3 (200x100px)"
+            img: require("../assets/logosPartener/img-partner-3.png")
         },
         {
             id: 4,
             name: "Partner 4",
-            placeholder: "Logo 4 (200x100px)"
+            img: require("../assets/logosPartener/img-partner-4.png")
         },
         {
             id: 5,
             name: "Partner 5",
-            placeholder: "Logo 5 (200x100px)"
+            img: require("../assets/logosPartener/img-partner-5.png")
         }
     ];
 
@@ -43,8 +43,7 @@ const PartnersSection = () => {
                     {partners.map((partner) => (
                         <div key={partner.id} className="partner-item">
                             <div className="partner-logo">
-                                <span className="logo-placeholder">{partner.placeholder}</span>
-                                <div className="placeholder-icon">🏢</div>
+                                <img src={partner.img} alt={partner.name} />
                             </div>
                         </div>
                     ))}
