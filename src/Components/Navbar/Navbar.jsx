@@ -1,44 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, MessageCircle } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeLink, setActiveLink] = useState('HOME');
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
-    const handleLinkClick = (linkName, event) => {
-        setActiveLink(linkName);
-        setIsMenuOpen(false);
-
-        // Simular navegación
-        event.preventDefault();
-        window.history.pushState({}, '', linkName.toLowerCase() === 'home' ? '/' : `/${linkName.toLowerCase()}`);
-    };
-
-    // Detectar la pestaña activa basada en la URL al cargar
-    useEffect(() => {
-        const path = window.location.pathname;
-        if (path === '/' || path === '') {
-            setActiveLink('HOME');
-        } else if (path.includes('about')) {
-            setActiveLink('ABOUT');
-        } else if (path.includes('services')) {
-            setActiveLink('SERVICES');
-        } else if (path.includes('contact')) {
-            setActiveLink('CONTACT');
-        }
-    }, []);
-
+    const location = useLocation();
     const navItems = [
-        { name: 'HOME', href: '#home' },
-        { name: 'ABOUT', href: '#about' },
-        { name: 'SERVICES', href: '#services' },
-        { name: 'CONTACT', href: '#contact' }
+        { name: 'HOME', to: '/' },
+        { name: 'ABOUT', to: '/about' },
+        { name: 'SERVICES', to: '/services' },
+        { name: 'CONTACT', to: '/contact' }
     ];
+    const getActiveLink = () => {
+        if (location.pathname === '/' || location.pathname === '') return 'HOME';
+        if (location.pathname.includes('about')) return 'ABOUT';
+        if (location.pathname.includes('services')) return 'SERVICES';
+        if (location.pathname.includes('contact')) return 'CONTACT';
+        return '';
+    };
+    const activeLink = getActiveLink();
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     return (
         <nav className="navbar">
@@ -51,14 +33,14 @@ const Navbar = () => {
                 {/* Desktop Navigation */}
                 <div className="navbar-menu desktop-menu">
                     {navItems.map((item) => (
-                        <a
+                        <Link
                             key={item.name}
-                            href={item.href}
+                            to={item.to}
                             className={`nav-link ${activeLink === item.name ? 'active' : ''}`}
-                            onClick={(e) => handleLinkClick(item.name, e)}
+                            onClick={() => setIsMenuOpen(false)}
                         >
                             {item.name}
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
@@ -80,14 +62,14 @@ const Navbar = () => {
             {/* Mobile Menu */}
             <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
                 {navItems.map((item) => (
-                    <a
+                    <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.to}
                         className={`mobile-nav-link ${activeLink === item.name ? 'active' : ''}`}
-                        onClick={(e) => handleLinkClick(item.name, e)}
+                        onClick={() => setIsMenuOpen(false)}
                     >
                         {item.name}
-                    </a>
+                    </Link>
                 ))}
                 <div className="mobile-contact">
                     <span className="mobile-contact-text">Talk With Our Experts</span>
