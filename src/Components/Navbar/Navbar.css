@@ -1,0 +1,244 @@
+/* Navbar Principal */
+.navbar {
+    background-color: #1F2937;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+/* Logo */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    flex-shrink: 0;
+}
+
+.logo-text h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.logo-text span {
+    color: #F59E0B;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Navegación Desktop */
+.desktop-menu {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #F59E0B;
+}
+
+.nav-link.active {
+    color: #F59E0B;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #F59E0B;
+}
+
+/* Botón de Contacto */
+.navbar-contact {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #2563EB;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-contact:hover {
+    background-color: #1D4ED8;
+}
+
+.contact-icon {
+    color: white;
+    flex-shrink: 0;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-text {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.contact-phone {
+    color: #F59E0B;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Botón Menú Móvil */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* Menú Móvil */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #1F2937;
+    border-top: 1px solid #374151;
+    padding: 20px;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-open {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-nav-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #374151;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+    color: #F59E0B;
+}
+
+.mobile-contact {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #2563EB;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.mobile-contact-text {
+    display: block;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.mobile-contact-phone {
+    color: #F59E0B;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar-contact .contact-text {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .navbar-container {
+        height: 70px;
+    }
+
+    .logo-text h1 {
+        font-size: 20px;
+    }
+
+    .logo-text span {
+        font-size: 11px;
+    }
+
+    .desktop-menu,
+    .navbar-contact {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 12px;
+    }
+
+    .navbar-container {
+        height: 60px;
+    }
+
+    .logo-text h1 {
+        font-size: 18px;
+    }
+
+    .logo-text span {
+        font-size: 10px;
+    }
+}
