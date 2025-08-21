@@ -7,7 +7,7 @@
 }
 
 .hero {
-  background: url("/public/logo.png") no-repeat center center/cover;
+  background: url("/src/assets/images/fondo.jpg") no-repeat center center/cover;
   position: relative;
   height: 100vh;
   display: flex;
@@ -28,6 +28,8 @@
 .hero-content {
   color: white;
   max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .hero-content h1 {
@@ -50,6 +52,7 @@
 .hero-buttons {
   display: flex;
   gap: 1rem;
+  justify-content: center;
 }
 
 .btn {
@@ -65,6 +68,7 @@
 .btn-primary {
   background-color: var(--blue-main);
   color: white;
+  
 }
 
 .btn-primary:hover {
