@@ -3,9 +3,9 @@ import "./Hero.css";
 
 const Hero = () => {
     const images = [
-        "/src/assets/images/fondo.jpg",
-        "/src/assets/images/fondo2.jpg",
-        "/src/assets/images/fondo3.jpg"
+        "https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/images/fondo.jpg",
+        "https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/images/fondo2.jpg",
+        "https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/images/fondo3.jpg"
     ];
 
     const [current, setCurrent] = useState(0);
