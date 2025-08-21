@@ -9,7 +9,15 @@ const Navbar = () => {
     const navItems = [
         { name: 'HOME', to: '/' },
         { name: 'ABOUT', to: '/about' },
-        { name: 'SERVICES', to: '/services' },
+        {
+            name: 'SERVICES',
+            to: '/services',
+            submenu: [
+                { name: 'Services Grid', to: '/services/grid' },
+                { name: 'Services List', to: '/services/list' },
+                { name: 'Services Single', to: '/services/single' }
+            ]
+        },
         { name: 'CONTACT', to: '/contact' }
     ];
     const getActiveLink = () => {
@@ -33,14 +41,32 @@ const Navbar = () => {
                 {/* Desktop Navigation */}
                 <div className="navbar-menu desktop-menu">
                     {navItems.map((item) => (
-                        <Link
-                            key={item.name}
-                            to={item.to}
-                            className={`nav-link ${activeLink === item.name ? 'active' : ''}`}
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            {item.name}
-                        </Link>
+                        item.submenu ? (
+                            <div key={item.name} className="nav-link nav-dropdown">
+                                <span>{item.name}</span>
+                                <div className="dropdown-content">
+                                    {item.submenu.map((sub) => (
+                                        <Link
+                                            key={sub.name}
+                                            to={sub.to}
+                                            className="dropdown-link"
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            {sub.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        ) : (
+                            <Link
+                                key={item.name}
+                                to={item.to}
+                                className={`nav-link ${activeLink === item.name ? 'active' : ''}`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {item.name}
+                            </Link>
+                        )
                     ))}
                 </div>
 
@@ -62,14 +88,32 @@ const Navbar = () => {
             {/* Mobile Menu */}
             <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
                 {navItems.map((item) => (
-                    <Link
-                        key={item.name}
-                        to={item.to}
-                        className={`mobile-nav-link ${activeLink === item.name ? 'active' : ''}`}
-                        onClick={() => setIsMenuOpen(false)}
-                    >
-                        {item.name}
-                    </Link>
+                    item.submenu ? (
+                        <div key={item.name} className="mobile-nav-link nav-dropdown">
+                            <span>{item.name}</span>
+                            <div className="dropdown-content">
+                                {item.submenu.map((sub) => (
+                                    <Link
+                                        key={sub.name}
+                                        to={sub.to}
+                                        className="dropdown-link"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        {sub.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    ) : (
+                        <Link
+                            key={item.name}
+                            to={item.to}
+                            className={`mobile-nav-link ${activeLink === item.name ? 'active' : ''}`}
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            {item.name}
+                        </Link>
+                    )
                 ))}
                 <div className="mobile-contact">
                     <span className="mobile-contact-text">Talk With Our Experts</span>

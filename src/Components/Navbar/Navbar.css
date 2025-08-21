@@ -1,3 +1,61 @@
+/* Dropdown styles for SERVICES */
+.nav-dropdown {
+    position: relative;
+    cursor: pointer;
+}
+.nav-dropdown > span {
+    padding-right: 8px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1F2937;
+    min-width: 180px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    border-radius: 8px;
+    z-index: 1001;
+}
+.nav-dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-link {
+    display: block;
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #374151;
+    transition: background 0.2s, color 0.2s;
+}
+.dropdown-link:last-child {
+    border-bottom: none;
+}
+.dropdown-link:hover {
+    background: #F59E0B;
+    color: #1F2937;
+}
+/* Mobile dropdown styles */
+.mobile-menu .nav-dropdown {
+    position: static;
+}
+.mobile-menu .dropdown-content {
+    display: block;
+    position: static;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    min-width: 0;
+    padding-left: 16px;
+}
+.mobile-menu .dropdown-link {
+    padding: 10px 0 10px 24px;
+    font-size: 15px;
+    color: #F59E0B;
+    background: none;
+    border-bottom: none;
+}
 /* Navbar Principal */
 .navbar {
     background-color: #1F2937;
