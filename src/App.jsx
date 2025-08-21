@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import HomeScreens from './pages/HomeScreens.jsx';
+import AboutScreen from './pages/AboutScreen.jsx';
 
 
 function About() {
@@ -13,7 +14,7 @@ function App() {
       {/* Navegación principal se gestiona en el Navbar, no aquí */}
       <Routes>
         <Route path="/" element={<HomeScreens />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<AboutScreen />} />
       </Routes>
     </BrowserRouter>
   );

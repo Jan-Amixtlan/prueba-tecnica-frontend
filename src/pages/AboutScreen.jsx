@@ -1,9 +1,12 @@
-import React from 'react'
-
+import Navbar from "../Components/Navbar/Navbar"
 const AboutScreen = () => {
-  return (
-    <div>AboutScreen</div>
-  )
+    return (
+        <>
+            <Navbar />
+
+            <h1>Estoy en navbar</h1>
+        </>
+    )
 }
 
 export default AboutScreen

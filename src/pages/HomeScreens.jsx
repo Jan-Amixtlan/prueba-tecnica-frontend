@@ -5,6 +5,8 @@ const HomeScreens = () => {
     return (
         <>
             <Navbar />
+
+            <h1>Estoy en HomeScreens</h1>
         </>
     );
 }

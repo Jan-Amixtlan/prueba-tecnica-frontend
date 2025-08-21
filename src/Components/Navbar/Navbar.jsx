@@ -30,8 +30,8 @@ const Navbar = () => {
 
                 {/* Desktop Navigation */}
                 <div className="navbar-menu desktop-menu">
-                    <a href="#home" className="nav-link active">HOME</a>
-                    <a href="#about" className="nav-link">ABOUT</a>
+                    <a href="/" className="nav-link active">HOME</a>
+                    <a href="about" className="nav-link">ABOUT</a>
                     <a href="#services" className="nav-link">SERVICES</a>
                     <a href="#contact" className="nav-link">CONTACT</a>
                 </div>
