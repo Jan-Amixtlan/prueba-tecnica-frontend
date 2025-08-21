@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar/Navbar.jsx';
 import FeaturesSection from '../Components/SectionF/FeaturesSection.jsx';
 import Footer from '../Components/Footer/Footer.jsx';
 import AboutSection from '../Components/About/AboutSection.jsx';
+import PartnersSection from '../Components/PartnersS/PartnersSection.jsx';
 
 const HomeScreens = () => {
     return (
@@ -11,11 +12,12 @@ const HomeScreens = () => {
             <Hero />
             <FeaturesSection />
             <AboutSection />
-            {/* Aquí puedes agregar más secciones si es necesario */}
-            <Footer />
+            <PartnersSection />
             
+            <Footer />
+
         </>
-        
+
     );
 }
 
