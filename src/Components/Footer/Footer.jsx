@@ -47,18 +47,7 @@ const Footer = () => {
                     {/* Company Info Section */}
                     <div className="footer-section company-info">
                         <div className="footer-logo">
-                            <div className="logo-icon">
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                                    <rect width="40" height="40" rx="8" fill="#F59E0B" />
-                                    <path d="M12 20h16M20 12v16" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                                    <circle cx="16" cy="16" r="2" fill="white" />
-                                    <circle cx="24" cy="24" r="2" fill="white" />
-                                </svg>
-                            </div>
-                            <div className="logo-text">
-                                <h2>CARDAN</h2>
-                                <span>Auto Repair Services</span>
-                            </div>
+                            <img src="/logo.png" alt="CARDAN Logo" style={{ width: '180px', height: 'auto' }} />
                         </div>
 
                         <p className="company-description">
