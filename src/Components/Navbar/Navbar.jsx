@@ -27,7 +27,7 @@ const Navbar = () => {
             <div className="navbar-container">
                 {/* Logo */}
                 <div className="navbar-logo">
-                    <img src="/public/logo.png" alt="Logo" className="logo-img" style={{ width: '150px', height: '60px' }} />
+                    <img src="/public/logo.png" alt="Logo" className="logo-img" style={{ width: '160px', height: '65px' }} />
                 </div>
 
                 {/* Desktop Navigation */}
