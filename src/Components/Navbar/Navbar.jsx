@@ -4,10 +4,23 @@ import './Navbar.css';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeLink, setActiveLink] = useState('HOME');
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    const handleLinkClick = (linkName) => {
+        setActiveLink(linkName);
+        setIsMenuOpen(false); // Cerrar menú móvil al hacer clic
+    };
+
+    const navItems = [
+        { name: 'HOME', href: '/' },
+        { name: 'ABOUT', href: '/about' },
+        { name: 'SERVICES', href: '#services' },
+        { name: 'CONTACT', href: '#contact' }
+    ];
 
     return (
         <nav className="navbar">
@@ -30,10 +43,16 @@ const Navbar = () => {
 
                 {/* Desktop Navigation */}
                 <div className="navbar-menu desktop-menu">
-                    <a href="/" className="nav-link active">HOME</a>
-                    <a href="about" className="nav-link">ABOUT</a>
-                    <a href="#services" className="nav-link">SERVICES</a>
-                    <a href="#contact" className="nav-link">CONTACT</a>
+                    {navItems.map((item) => (
+                        <a
+                            key={item.name}
+                            href={item.href}
+                            className={`nav-link ${activeLink === item.name ? 'active' : ''}`}
+                            onClick={() => handleLinkClick(item.name)}
+                        >
+                            {item.name}
+                        </a>
+                    ))}
                 </div>
 
                 {/* Contact Button */}
@@ -53,10 +72,16 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
-                <a href="#home" className="mobile-nav-link" onClick={toggleMenu}>HOME</a>
-                <a href="#about" className="mobile-nav-link" onClick={toggleMenu}>ABOUT</a>
-                <a href="#services" className="mobile-nav-link" onClick={toggleMenu}>SERVICES</a>
-                <a href="#contact" className="mobile-nav-link" onClick={toggleMenu}>CONTACT</a>
+                {navItems.map((item) => (
+                    <a
+                        key={item.name}
+                        href={item.href}
+                        className={`mobile-nav-link ${activeLink === item.name ? 'active' : ''}`}
+                        onClick={() => handleLinkClick(item.name)}
+                    >
+                        {item.name}
+                    </a>
+                ))}
                 <div className="mobile-contact">
                     <span className="mobile-contact-text">Talk With Our Experts</span>
                     <span className="mobile-contact-phone">(810) 920-0664</span>
