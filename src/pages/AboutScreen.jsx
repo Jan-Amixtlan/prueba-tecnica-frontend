@@ -1,12 +1,17 @@
 import Navbar from "../Components/Navbar/Navbar"
 import Footer from "../Components/Footer/Footer"
+import AboutSection from "../Components/About/AboutSection"
+import FeaturesSection from "../Components/SectionF/FeaturesSection"
+import PartnersSection from "../Components/PartnersS/PartnersSection"
 
 const AboutScreen = () => {
     return (
         <>
             <Navbar />
-
-            <h1>Estoy en navbar</h1>
+            <AboutSection />    
+            <FeaturesSection />
+            <PartnersSection />
+            
             < Footer />
         </>
     )
