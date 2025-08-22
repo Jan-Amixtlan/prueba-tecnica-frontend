@@ -4,6 +4,7 @@ import FeaturesSection from '../Components/SectionF/FeaturesSection.jsx';
 import Footer from '../Components/Footer/Footer.jsx';
 import AboutSection from '../Components/About/AboutSection.jsx';
 import PartnersSection from '../Components/PartnersS/PartnersSection.jsx';
+import ServicesSection from '../Components/ServicesS/ServicesSection.jsx';
 
 const HomeScreens = () => {
     return (
@@ -13,7 +14,7 @@ const HomeScreens = () => {
             <FeaturesSection />
             <AboutSection />
             <PartnersSection />
-            
+            <ServicesSection />
             <Footer />
 
         </>
