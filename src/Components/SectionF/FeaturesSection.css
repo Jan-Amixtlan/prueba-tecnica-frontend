@@ -13,12 +13,72 @@
     align-items: start;
 }
 
+/* Features Wrapper for mobile carousel */
+.features-wrapper {
+    display: contents;
+}
+
+.features-wrapper.mobile-carousel {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
 /* Feature Card */
 .feature-card {
     display: flex;
     gap: 20px;
     align-items: flex-start;
     padding: 0;
+}
+
+/* Mobile carousel styles */
+.mobile-carousel .feature-card {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mobile-carousel .feature-card.active-slide {
+    opacity: 1;
+    pointer-events: all;
+    position: relative;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+    padding: 0;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: #CBD5E1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.indicator:hover {
+    background-color: #94A3B8;
+    transform: scale(1.1);
+}
+
+.indicator.active {
+    background-color: #2563EB;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .feature-icon {
@@ -95,19 +155,19 @@
     }
 
     .features-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        display: block;
+    }
+
+    .features-wrapper.mobile-carousel {
+        min-height: 300px;
     }
 
     .feature-card {
         flex-direction: column;
         text-align: center;
         gap: 16px;
-    }
-
-    .feature-card:last-child {
-        grid-column: auto;
         max-width: none;
+        grid-column: auto;
         justify-self: auto;
     }
 
@@ -125,6 +185,10 @@
         font-size: 15px;
         margin-bottom: 16px;
     }
+
+    .carousel-indicators {
+        margin-top: 30px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -132,8 +196,8 @@
         padding: 40px 12px;
     }
 
-    .features-container {
-        gap: 32px;
+    .features-wrapper.mobile-carousel {
+        min-height: 280px;
     }
 
     .feature-title {
@@ -146,5 +210,15 @@
 
     .feature-icon {
         padding: 12px;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    .carousel-indicators {
+        gap: 10px;
+        margin-top: 25px;
     }
 }
