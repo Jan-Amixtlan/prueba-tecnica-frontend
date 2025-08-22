@@ -19,7 +19,7 @@ const AboutSection = () => {
                 <div className="images-grid">
                     <div className="main-image-container">
                         <img
-                            src="https://static.nuso.org/media/cache/71/23/712391a16cf08a7a8758df642a8f7225.jpg"
+                            src="https://github.com/Jan-Amixtlan/prueba-tecnica-frontend/blob/main/src/assets/images/Partner1.jpg?raw=true"
                             alt="Professional mechanic working on car engine in modern garage"
                             className="main-image"
                         />
@@ -43,12 +43,12 @@ const AboutSection = () => {
 
                         <div className="secondary-images">
                             <img
-                                src="https://static.nuso.org/media/cache/71/23/712391a16cf08a7a8758df642a8f7225.jpg"
+                                src="https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/images/partner2.jpg"
                                 alt="Mechanic servicing vehicle suspension and maintenance"
                                 className="small-image"
                             />
                             <img
-                                src="https://static.nuso.org/media/cache/71/23/712391a16cf08a7a8758df642a8f7225.jpg"
+                                src="https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/images/partner3.jpg"
                                 alt="Mechanic servicing vehicle suspension and maintenance"
                                 className="small-image"
                             />
