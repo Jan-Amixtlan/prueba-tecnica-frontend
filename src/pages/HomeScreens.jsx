@@ -7,6 +7,7 @@ import PartnersSection from '../Components/PartnersS/PartnersSection.jsx';
 import ServicesSection from '../Components/ServicesS/ServicesSection.jsx';
 import ContactBar from '../Components/ContactB/ContactBar.jsx';
 import ProcessSteps from '../Components/ProcessS/ProcessSteps.jsx';
+import WhyChooseSection from '../Components/ChooseSect/WhyChooseSection.jsx';
 
 const HomeScreens = () => {
     return (
@@ -19,6 +20,7 @@ const HomeScreens = () => {
             <ServicesSection />
             <ContactBar />
             <ProcessSteps />
+            <WhyChooseSection />
 
             <Footer />
 

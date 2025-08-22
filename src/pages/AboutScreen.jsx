@@ -10,7 +10,7 @@ const AboutScreen = () => {
             <Navbar />
             <AboutSection />    
             <FeaturesSection />
-            <PartnersSection />
+            <PartnersSection /> 
             
             < Footer />
         </>
