@@ -43,14 +43,9 @@ const AboutSection = () => {
 
                         <div className="secondary-images">
                             <img
-                                src="https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/images/partner2.jpg"
-                                alt="Mechanic servicing vehicle suspension and maintenance"
-                                className="small-image"
-                            />
-                            <img
                                 src="https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/images/partner3.jpg"
                                 alt="Mechanic servicing vehicle suspension and maintenance"
-                                className="small-image"
+                                className="small-image single-image"
                             />
                         </div>
                     </div>
