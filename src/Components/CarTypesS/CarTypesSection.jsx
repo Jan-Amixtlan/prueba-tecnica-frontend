@@ -11,7 +11,7 @@ const CarTypesSection = () => {
         const updateItemsToShow = () => {
             const newItemsToShow = window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
             setItemsToShow(newItemsToShow);
-            
+
             // Ajustar currentSlide si excede el máximo permitido
             const maxSlide = Math.max(0, carTypes.length - newItemsToShow);
             setCurrentSlide(prev => Math.min(prev, maxSlide));
@@ -19,7 +19,7 @@ const CarTypesSection = () => {
 
         updateItemsToShow();
         window.addEventListener('resize', updateItemsToShow);
-        
+
         return () => window.removeEventListener('resize', updateItemsToShow);
     }, []);
 
@@ -85,9 +85,9 @@ const CarTypesSection = () => {
     // Calcular el offset en píxeles basado en el tamaño de pantalla
     const getOffsetPx = () => {
         if (typeof window === 'undefined') return 0;
-        
+
         let cardWidth, gap;
-        
+
         if (window.innerWidth <= 768) {
             cardWidth = 240;
             gap = 20;
@@ -98,7 +98,7 @@ const CarTypesSection = () => {
             cardWidth = 280;
             gap = 20;
         }
-        
+
         return currentSlide * (cardWidth + gap);
     };
 
@@ -115,7 +115,7 @@ const CarTypesSection = () => {
 
                 {/* Car Types Carousel */}
                 <div className="car-types-grid">
-                    <div 
+                    <div
                         className="carousel-wrapper"
                         style={{
                             transform: `translateX(-${getOffsetPx()}px)`
@@ -126,92 +126,92 @@ const CarTypesSection = () => {
                                 key={carType.id}
                                 className={`car-type-card ${carType.featured ? 'featured-card' : ''}`}
                             >
-                            <div className="car-illustration">
-                                <div className="car-icon">
-                                    {carType.carImage === "🚗" && (
-                                        <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
-                                            <rect x="10" y="25" width="80" height="20" rx="10" fill="#22C55E" stroke="#16A34A" strokeWidth="2" />
-                                            <rect x="20" y="15" width="50" height="15" rx="7" fill="#22C55E" stroke="#16A34A" strokeWidth="2" />
-                                            <circle cx="25" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="75" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="25" cy="50" r="4" fill="#6B7280" />
-                                            <circle cx="75" cy="50" r="4" fill="#6B7280" />
-                                        </svg>
-                                    )}
-                                    {carType.carImage === "🚙" && (
-                                        <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
-                                            <rect x="5" y="20" width="90" height="25" rx="8" fill="#DC2626" stroke="#B91C1C" strokeWidth="2" />
-                                            <rect x="15" y="10" width="60" height="20" rx="6" fill="#DC2626" stroke="#B91C1C" strokeWidth="2" />
-                                            <rect x="75" y="25" width="15" height="15" rx="3" fill="#DC2626" stroke="#B91C1C" strokeWidth="2" />
-                                            <circle cx="25" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="80" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="25" cy="50" r="4" fill="#6B7280" />
-                                            <circle cx="80" cy="50" r="4" fill="#6B7280" />
-                                        </svg>
-                                    )}
-                                    {carType.carImage === "🏎️" && (
-                                        <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
-                                            <path d="M15 35 L25 25 L75 25 L90 35 L90 45 L15 45 Z" fill="#F59E0B" stroke="#D97706" strokeWidth="2" />
-                                            <path d="M25 25 L35 15 L65 15 L75 25" fill="#F59E0B" stroke="#D97706" strokeWidth="2" />
-                                            <circle cx="30" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="75" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="30" cy="50" r="4" fill="#6B7280" />
-                                            <circle cx="75" cy="50" r="4" fill="#6B7280" />
-                                        </svg>
-                                    )}
-                                    {carType.carImage === "🔋" && (
-                                        <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
-                                            <rect x="10" y="25" width="80" height="20" rx="10" fill="#10B981" stroke="#059669" strokeWidth="2" />
-                                            <rect x="20" y="15" width="50" height="15" rx="7" fill="#10B981" stroke="#059669" strokeWidth="2" />
-                                            <path d="M30 30 L35 25 L40 35 L45 25 L50 30" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            <circle cx="25" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="75" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="25" cy="50" r="4" fill="#6B7280" />
-                                            <circle cx="75" cy="50" r="4" fill="#6B7280" />
-                                        </svg>
-                                    )}
-                                    {carType.carImage === "🚘" && (
-                                        <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
-                                            <rect x="8" y="25" width="84" height="20" rx="10" fill="#8B5CF6" stroke="#7C3AED" strokeWidth="2" />
-                                            <rect x="18" y="15" width="54" height="15" rx="7" fill="#8B5CF6" stroke="#7C3AED" strokeWidth="2" />
-                                            <rect x="12" y="30" width="8" height="8" rx="2" fill="#FFFFFF" />
-                                            <rect x="25" y="30" width="8" height="8" rx="2" fill="#FFFFFF" />
-                                            <rect x="55" y="30" width="8" height="8" rx="2" fill="#FFFFFF" />
-                                            <rect x="68" y="30" width="8" height="8" rx="2" fill="#FFFFFF" />
-                                            <circle cx="25" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="75" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
-                                            <circle cx="25" cy="50" r="4" fill="#6B7280" />
-                                            <circle cx="75" cy="50" r="4" fill="#6B7280" />
-                                        </svg>
-                                    )}
+                                <div className="car-illustration">
+                                    <div className="car-icon">
+                                        {carType.carImage === "🚗" && (
+                                            <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
+                                                <rect x="10" y="25" width="80" height="20" rx="10" fill="#22C55E" stroke="#16A34A" strokeWidth="2" />
+                                                <rect x="20" y="15" width="50" height="15" rx="7" fill="#22C55E" stroke="#16A34A" strokeWidth="2" />
+                                                <circle cx="25" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="75" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="25" cy="50" r="4" fill="#6B7280" />
+                                                <circle cx="75" cy="50" r="4" fill="#6B7280" />
+                                            </svg>
+                                        )}
+                                        {carType.carImage === "🚙" && (
+                                            <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
+                                                <rect x="5" y="20" width="90" height="25" rx="8" fill="#DC2626" stroke="#B91C1C" strokeWidth="2" />
+                                                <rect x="15" y="10" width="60" height="20" rx="6" fill="#DC2626" stroke="#B91C1C" strokeWidth="2" />
+                                                <rect x="75" y="25" width="15" height="15" rx="3" fill="#DC2626" stroke="#B91C1C" strokeWidth="2" />
+                                                <circle cx="25" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="80" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="25" cy="50" r="4" fill="#6B7280" />
+                                                <circle cx="80" cy="50" r="4" fill="#6B7280" />
+                                            </svg>
+                                        )}
+                                        {carType.carImage === "🏎️" && (
+                                            <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
+                                                <path d="M15 35 L25 25 L75 25 L90 35 L90 45 L15 45 Z" fill="#F59E0B" stroke="#D97706" strokeWidth="2" />
+                                                <path d="M25 25 L35 15 L65 15 L75 25" fill="#F59E0B" stroke="#D97706" strokeWidth="2" />
+                                                <circle cx="30" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="75" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="30" cy="50" r="4" fill="#6B7280" />
+                                                <circle cx="75" cy="50" r="4" fill="#6B7280" />
+                                            </svg>
+                                        )}
+                                        {carType.carImage === "🔋" && (
+                                            <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
+                                                <rect x="10" y="25" width="80" height="20" rx="10" fill="#10B981" stroke="#059669" strokeWidth="2" />
+                                                <rect x="20" y="15" width="50" height="15" rx="7" fill="#10B981" stroke="#059669" strokeWidth="2" />
+                                                <path d="M30 30 L35 25 L40 35 L45 25 L50 30" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                <circle cx="25" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="75" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="25" cy="50" r="4" fill="#6B7280" />
+                                                <circle cx="75" cy="50" r="4" fill="#6B7280" />
+                                            </svg>
+                                        )}
+                                        {carType.carImage === "🚘" && (
+                                            <svg width="100" height="50" viewBox="0 0 120 60" fill="none">
+                                                <rect x="8" y="25" width="84" height="20" rx="10" fill="#8B5CF6" stroke="#7C3AED" strokeWidth="2" />
+                                                <rect x="18" y="15" width="54" height="15" rx="7" fill="#8B5CF6" stroke="#7C3AED" strokeWidth="2" />
+                                                <rect x="12" y="30" width="8" height="8" rx="2" fill="#FFFFFF" />
+                                                <rect x="25" y="30" width="8" height="8" rx="2" fill="#FFFFFF" />
+                                                <rect x="55" y="30" width="8" height="8" rx="2" fill="#FFFFFF" />
+                                                <rect x="68" y="30" width="8" height="8" rx="2" fill="#FFFFFF" />
+                                                <circle cx="25" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="75" cy="50" r="8" fill="#374151" stroke="#1F2937" strokeWidth="2" />
+                                                <circle cx="25" cy="50" r="4" fill="#6B7280" />
+                                                <circle cx="75" cy="50" r="4" fill="#6B7280" />
+                                            </svg>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="card-content">
+                                    <h3 className="card-title">{carType.title}</h3>
+                                    <p className="card-description">{carType.description}</p>
+
+                                    <button className="learn-more-btn">
+                                        LEARN MORE
+                                        <ArrowRight size={16} />
+                                    </button>
                                 </div>
                             </div>
-
-                            <div className="card-content">
-                                <h3 className="card-title">{carType.title}</h3>
-                                <p className="card-description">{carType.description}</p>
-
-                                <button className="learn-more-btn">
-                                    LEARN MORE
-                                    <ArrowRight size={16} />
-                                </button>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
                     </div>
                 </div>
 
                 {/* Navigation */}
                 {carTypes.length > itemsToShow && (
                     <div className="navigation-controls">
-                        <button 
+                        <button
                             className={`nav-btn prev-btn ${currentSlide === 0 ? 'disabled' : ''}`}
                             onClick={prevSlide}
                             disabled={currentSlide === 0}
                         >
                             <ChevronLeft size={20} />
                         </button>
-                        
+
                         {/* Indicadores de slide */}
                         <div className="slide-indicators">
                             {Array.from({ length: Math.max(0, carTypes.length - itemsToShow) + 1 }, (_, index) => (
@@ -222,8 +222,8 @@ const CarTypesSection = () => {
                                 />
                             ))}
                         </div>
-                        
-                        <button 
+
+                        <button
                             className={`nav-btn next-btn ${currentSlide >= Math.max(0, carTypes.length - itemsToShow) ? 'disabled' : ''}`}
                             onClick={nextSlide}
                             disabled={currentSlide >= Math.max(0, carTypes.length - itemsToShow)}

@@ -8,7 +8,7 @@ import ServicesSection from '../Components/ServicesS/ServicesSection.jsx';
 import ContactBar from '../Components/ContactB/ContactBar.jsx';
 import ProcessSteps from '../Components/ProcessS/ProcessSteps.jsx';
 import WhyChooseSection from '../Components/ChooseSect/WhyChooseSection.jsx';
-import CarTypesSection from '../Components/CarTypesS/CarTypesSection.JSX';
+import CarTypesSection from '../Components/CarTypesS/CarTypesSection.jsx';
 
 const HomeScreens = () => {
     return (
@@ -23,7 +23,7 @@ const HomeScreens = () => {
             <ProcessSteps />
             <WhyChooseSection />
             <CarTypesSection />
-            
+
             <Footer />
 
         </>
