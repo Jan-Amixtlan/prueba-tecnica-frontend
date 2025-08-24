@@ -13,6 +13,7 @@ import RecentProjectsSection from '../Components/RecentProjectS/RecentProjectsSe
 import TestimonialsSection from '../Components/TestimonialS/TestimonialsSection.jsx';
 import StatsSection from '../Components/StateS/StatsSection.jsx';
 import NewsSection from '../Components/NewsS/NewsSection.jsx';
+import NewsletterSubscription from '../Components/NewsLetterS/NewsletterSubscription.jsx';
 
 const HomeScreens = () => {
     return (
@@ -31,6 +32,7 @@ const HomeScreens = () => {
             <TestimonialsSection />
             <StatsSection />
             <NewsSection />
+            <NewsletterSubscription />
 
             <Footer />
 
