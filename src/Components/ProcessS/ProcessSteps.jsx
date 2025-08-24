@@ -1,4 +1,3 @@
-import React from 'react';
 import { FileText, Settings, Car, ArrowRight } from 'lucide-react';
 import './ProcessSteps.css';
 
