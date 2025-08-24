@@ -11,6 +11,7 @@ import WhyChooseSection from '../Components/ChooseSect/WhyChooseSection.jsx';
 import CarTypesSection from '../Components/CarTypesS/CarTypesSection.jsx';
 import RecentProjectsSection from '../Components/RecentProjectS/RecentProjectsSection.jsx';
 import TestimonialsSection from '../Components/TestimonialS/TestimonialsSection.jsx';
+import StatsSection from '../Components/StateS/StatsSection.jsx';
 
 const HomeScreens = () => {
     return (
@@ -27,6 +28,7 @@ const HomeScreens = () => {
             <CarTypesSection />
             <RecentProjectsSection />
             <TestimonialsSection />
+            <StatsSection />
 
             <Footer />
 
