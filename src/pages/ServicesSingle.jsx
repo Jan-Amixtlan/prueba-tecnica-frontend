@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/Footer';
+import NewsletterSubscription from '../Components/NewsLetterS/NewsletterSubscription';
 
 const ServicesSingle = () => (
   <>
@@ -9,6 +10,7 @@ const ServicesSingle = () => (
       <h1>Services Single</h1>
       <p>Pantalla de servicio individual.</p>
     </div>
+    <NewsletterSubscription />
     <Footer />
   </>
 );

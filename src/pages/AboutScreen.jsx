@@ -5,6 +5,7 @@ import FeaturesSection from "../Components/SectionF/FeaturesSection"
 import PartnersSection from "../Components/PartnersS/PartnersSection"
 import AboutUsBanner from "../Components/AboutBanner/AboutUsBanner"
 import WhyChooseUs from "../Components/WhyChooseUsAbout/WhyChooseUs"
+import ExpertTechnicians from "../Components/ExpertTechAbout/ExpertTechnicians"
 
 const AboutScreen = () => {
     return (
@@ -14,6 +15,7 @@ const AboutScreen = () => {
             <AboutSection /> 
             <FeaturesSection />
             <WhyChooseUs />   
+            <ExpertTechnicians />
             <PartnersSection /> 
 
             
