@@ -19,7 +19,7 @@ const AboutSection = () => {
                 <div className="images-grid">
                     <div className="main-image-container">
                         <img
-                            src="https://github.com/Jan-Amixtlan/prueba-tecnica-frontend/blob/main/src/assets/images/Partner1.jpg?raw=true"
+                            src="https://pro-theme.com/html/cardan/assets/img/img-about-1.jpg"
                             alt="Professional mechanic working on car engine in modern garage"
                             className="main-image"
                         />
@@ -42,10 +42,11 @@ const AboutSection = () => {
                         </div>
 
                         <div className="secondary-images">
+                        
                             <img
-                                src="https://raw.githubusercontent.com/Jan-Amixtlan/prueba-tecnica-frontend/refs/heads/main/src/assets/images/partner3.jpg"
+                                src="https://pro-theme.com/html/cardan/assets/img/img-about-3.jpg"
                                 alt="Mechanic servicing vehicle suspension and maintenance"
-                                className="small-image single-image"
+                                className="small-image"
                             />
                         </div>
                     </div>

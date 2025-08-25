@@ -3,14 +3,19 @@ import Footer from "../Components/Footer/Footer"
 import AboutSection from "../Components/About/AboutSection"
 import FeaturesSection from "../Components/SectionF/FeaturesSection"
 import PartnersSection from "../Components/PartnersS/PartnersSection"
+import AboutUsBanner from "../Components/AboutBanner/AboutUsBanner"
+import WhyChooseUs from "../Components/WhyChooseUsAbout/WhyChooseUs"
 
 const AboutScreen = () => {
     return (
         <>
             <Navbar />
-            <AboutSection />    
+            <AboutUsBanner />
+            <AboutSection /> 
             <FeaturesSection />
+            <WhyChooseUs />   
             <PartnersSection /> 
+
             
             < Footer />
         </>
