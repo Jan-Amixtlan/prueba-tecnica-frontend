@@ -18,8 +18,8 @@ const AboutScreen = () => {
             <ExpertTechnicians />
             <PartnersSection /> 
 
-            
-            < Footer />
+
+            <Footer />
         </>
     )
 }

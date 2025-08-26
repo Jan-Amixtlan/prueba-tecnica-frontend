@@ -1,69 +1,65 @@
 import React, { useState } from 'react';
 import './WhyChooseUs.css';
 
-const WhyChooseUs = () => {
+const WhyChooseExact = () => {
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
     const services = [
         {
             id: 1,
-            icon: "car-service",
             title: "Reliable & Fast Service",
-            description: "Magna sed alique umt derit enimd mini venia"
+            description: "Magna sed alique umt derit enimd mini venia",
+            icon: "car-service"
         },
         {
             id: 2,
-            icon: "repair-tools",
             title: "Right-Way Repairing",
-            description: "Derit magna alique umts enimd mini dolor sed"
+            description: "Derit magna alique umts enimd mini dolor sed",
+            icon: "repair-tools"
         },
         {
             id: 3,
-            icon: "specialists",
             title: "Leading Auto Specialists",
-            description: "Magna alique sed umt enimd dolor min venia"
+            description: "Magna alique sed umt enimd dolor min venia",
+            icon: "specialists"
         }
     ];
 
     const handleVideoPlay = () => {
         setIsVideoPlaying(!isVideoPlaying);
-        // Aquí puedes agregar la lógica para reproducir el video
         console.log('Video play clicked');
     };
 
-    const renderIcon = (iconType) => {
+    const renderServiceIcon = (iconType) => {
+        const baseIconStyle = {
+            width: '40px',
+            height: '40px'
+        };
+
         switch (iconType) {
             case 'car-service':
                 return (
-                    <div className="icon-wrapper">
-                        <div className="car-icon">
-                            <div className="car-body"></div>
-                            <div className="car-wheels">
-                                <div className="wheel"></div>
-                                <div className="wheel"></div>
-                            </div>
-                            <div className="wrench-icon"></div>
-                        </div>
+                    <div className="service-icon car-service-icon" style={baseIconStyle}>
+                        <div className="car-body"></div>
+                        <div className="car-detail"></div>
+                        <div className="wrench"></div>
                     </div>
                 );
             case 'repair-tools':
                 return (
-                    <div className="icon-wrapper">
-                        <div className="tools-icon">
-                            <div className="hammer"></div>
-                            <div className="screwdriver"></div>
-                        </div>
+                    <div className="service-icon repair-tools-icon" style={baseIconStyle}>
+                        <div className="tool-1"></div>
+                        <div className="tool-2"></div>
+                        <div className="tool-handle"></div>
                     </div>
                 );
             case 'specialists':
                 return (
-                    <div className="icon-wrapper">
-                        <div className="specialist-tools">
-                            <div className="tool-set">
-                                <div className="tool"></div>
-                                <div className="tool"></div>
-                                <div className="tool"></div>
-                            </div>
+                    <div className="service-icon specialists-icon" style={baseIconStyle}>
+                        <div className="tool-set">
+                            <div className="tool"></div>
+                            <div className="tool"></div>
+                            <div className="tool"></div>
                         </div>
                     </div>
                 );
@@ -73,23 +69,21 @@ const WhyChooseUs = () => {
     };
 
     return (
-        <section className="why-choose-section">
+        <section className="why-choose-exact">
             <div className="container">
                 <div className="content-wrapper">
                     {/* Contenido de texto */}
                     <div className="text-content">
-                        <div className="header-content">
-                            <p className="subtitle">Why Choose Cardan Repair Services</p>
-                            <h2 className="main-title">
-                                Master Technicians With<br />
-                                Extensive Knowledge
-                            </h2>
-                            <div className="decorative-line"></div>
-                        </div>
+                        <p className="subtitle">Why Choose Cardan Repair Services</p>
+                        <h2 className="main-title">
+                            Master Technicians With<br />
+                            Extensive Knowledge
+                        </h2>
+                        <div className="decorative-line"></div>
 
                         <p className="description">
                             Tempor incididunt labor sed dolore umt magna sed aliquay enim ad dolor minim
-                            veniam quis nostrud exercitation ullamco laboris ex sed ipsum ea reprehen deritn
+                            veniam quis nostrud exercitation ullamco laboris ex sed ipsum ea reprehen deritin
                             voluptate.
                         </p>
 
@@ -97,23 +91,25 @@ const WhyChooseUs = () => {
                         <div className="services-list">
                             {services.map((service) => (
                                 <div key={service.id} className="service-item">
-                                    <div className="service-icon">
-                                        {renderIcon(service.icon)}
+                                    <div className="service-icon-wrapper">
+                                        {renderServiceIcon(service.icon)}
                                     </div>
                                     <div className="service-content">
                                         <h3 className="service-title">{service.title}</h3>
+                                        <div className="service-underline"></div>
                                         <p className="service-description">{service.description}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
+                        
                     </div>
 
                     {/* Contenido visual */}
                     <div className="visual-content">
                         <div className="image-container">
                             <img
-                                src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=800&h=600&fit=crop"
+                                src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=800&h=600&fit=crop&crop=face"
                                 alt="Professional mechanic smiling"
                                 className="mechanic-image"
                             />
@@ -132,4 +128,4 @@ const WhyChooseUs = () => {
     );
 };
 
-export default WhyChooseUs;
+export default WhyChooseExact;
