@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { reviewService } from '../../services/reviewService';
+import { useNotifications } from '../../hooks/useNotifications';
+import NotificationSystem from '../NotificationSystem/NotificationSystem';
+import SuccessAnimation from '../SuccessAnimation/SuccessAnimation';
 import './AddReviewForm.css';
 
 const AddReviewForm = () => {
@@ -12,8 +16,9 @@ const AddReviewForm = () => {
 
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
     const [touched, setTouched] = useState({});
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const { notifications, removeNotification, showSuccess, showError } = useNotifications();
 
     const validateField = (name, value) => {
         switch (name) {
@@ -117,15 +122,29 @@ const AddReviewForm = () => {
         }
 
         setIsSubmitting(true);
-        setIsSuccess(false);
 
         try {
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // Prepare data for API
+            const reviewData = {
+                title: formData.reviewTitle,
+                name: formData.name,
+                email: formData.email,
+                content: formData.reviewContent,
+                rating: 5 // Default rating, you can add a rating input later
+            };
 
-            console.log('Review submitted:', formData);
+            await reviewService.submitReview(reviewData);
 
-            setIsSuccess(true);
+            // Show animated success modal
+            setShowSuccessModal(true);
+
+            // Also show notification
+            showSuccess(
+                '¡Reseña enviada!', 
+                `Gracias ${formData.name}, tu reseña ha sido publicada exitosamente.`,
+                6000
+            );
+
             setFormData({
                 reviewTitle: '',
                 name: '',
@@ -136,10 +155,12 @@ const AddReviewForm = () => {
             setTouched({});
             setErrors({});
 
-            // Hide success message after 5 seconds
-            setTimeout(() => setIsSuccess(false), 5000);
-
         } catch (error) {
+            showError(
+                'Error al enviar reseña', 
+                'No pudimos publicar tu reseña. Por favor, intenta nuevamente.',
+                8000
+            );
             console.error('Error submitting review:', error);
         } finally {
             setIsSubmitting(false);
@@ -165,13 +186,6 @@ const AddReviewForm = () => {
                             <div className="line-segment"></div>
                         </div>
                     </div>
-
-                    {isSuccess && (
-                        <div className="success-message">
-                            <div className="success-icon">✓</div>
-                            <p>Thank you! Your review has been submitted successfully.</p>
-                        </div>
-                    )}
 
                     <form onSubmit={handleSubmit} className="review-form" noValidate>
                         {/* Review Title */}
@@ -283,6 +297,20 @@ const AddReviewForm = () => {
                     </form>
                 </div>
             </div>
+            
+            {/* Notification System */}
+            <NotificationSystem 
+                notifications={notifications} 
+                removeNotification={removeNotification} 
+            />
+            
+            {/* Success Animation Modal */}
+            <SuccessAnimation
+                isVisible={showSuccessModal}
+                title="¡Reseña Publicada con Éxito!"
+                message={`¡Excelente ${formData.name || 'Usuario'}! Tu reseña ha sido publicada y ayudará a otros clientes. Gracias por compartir tu experiencia con nosotros.`}
+                onClose={() => setShowSuccessModal(false)}
+            />
         </section>
     );
 };

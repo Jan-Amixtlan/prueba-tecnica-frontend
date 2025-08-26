@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { contactService } from '../../services/contactService';
+import { useNotifications } from '../../hooks/useNotifications';
+import NotificationSystem from '../NotificationSystem/NotificationSystem';
+import SuccessAnimation from '../SuccessAnimation/SuccessAnimation';
 import './ContactForm.css';
 
 const ContactForm = () => {
@@ -9,6 +13,10 @@ const ContactForm = () => {
         message: ''
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const { notifications, removeNotification, showSuccess, showError } = useNotifications();
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -17,10 +25,41 @@ const ContactForm = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aquí puedes agregar la lógica para enviar el formulario
-        console.log('Form submitted:', formData);
+        setIsSubmitting(true);
+
+        try {
+            await contactService.sendContactForm(formData);
+            
+            // Show animated success modal
+            setShowSuccessModal(true);
+            
+            // Also show notification
+            showSuccess(
+                '¡Mensaje enviado!', 
+                `Gracias ${formData.name}, hemos recibido tu mensaje y te responderemos pronto.`,
+                6000
+            );
+            
+            // Reset form after successful submission
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+
+        } catch (error) {
+            showError(
+                'Error al enviar mensaje', 
+                'No pudimos enviar tu mensaje. Por favor, intenta nuevamente.',
+                8000
+            );
+            console.error('Error sending contact form:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const renderLocationIcon = () => (
@@ -120,6 +159,7 @@ const ContactForm = () => {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         required
+                                        disabled={isSubmitting}
                                         className="form-input"
                                     />
                                 </div>
@@ -131,6 +171,7 @@ const ContactForm = () => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         required
+                                        disabled={isSubmitting}
                                         className="form-input"
                                     />
                                 </div>
@@ -143,6 +184,7 @@ const ContactForm = () => {
                                     placeholder="Subject"
                                     value={formData.subject}
                                     onChange={handleInputChange}
+                                    disabled={isSubmitting}
                                     className="form-input"
                                 />
                             </div>
@@ -154,17 +196,36 @@ const ContactForm = () => {
                                     rows="6"
                                     value={formData.message}
                                     onChange={handleInputChange}
+                                    disabled={isSubmitting}
                                     className="form-textarea"
                                 ></textarea>
                             </div>
 
-                            <button type="submit" className="submit-button">
-                                SEND MESSAGE
+                            <button 
+                                type="submit" 
+                                className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
+            
+            {/* Notification System */}
+            <NotificationSystem 
+                notifications={notifications} 
+                removeNotification={removeNotification} 
+            />
+            
+            {/* Success Animation Modal */}
+            <SuccessAnimation
+                isVisible={showSuccessModal}
+                title="¡Mensaje Enviado Exitosamente!"
+                message={`Hola ${formData.name || 'Usuario'}, hemos recibido tu mensaje. Nuestro equipo se pondrá en contacto contigo muy pronto. ¡Gracias por confiar en nosotros!`}
+                onClose={() => setShowSuccessModal(false)}
+            />
         </section>
     );
 };
