@@ -1,14 +1,16 @@
 import { apiService } from './api.js';
 
 export const appointmentService = {
-  createAppointment: async (data) => {
-    const response = await fetch(`${API_BASE_URL}/api/v1/appointments/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    return response.json();
-  },
+    // Book new appointment
+    async bookAppointment(appointmentData) {
+        try {
+            const response = await apiService.post('/appointments', appointmentData);
+            return response;
+        } catch (error) {
+            console.error('Error booking appointment:', error);
+            throw error;
+        }
+    },
 
     // Get appointments (admin)
     async getAppointments() {
@@ -28,6 +30,17 @@ export const appointmentService = {
             return response;
         } catch (error) {
             console.error('Error updating appointment status:', error);
+            throw error;
+        }
+    },
+
+    // Cancel appointment
+    async cancelAppointment(id) {
+        try {
+            const response = await apiService.delete(`/appointments/${id}`);
+            return response;
+        } catch (error) {
+            console.error('Error cancelling appointment:', error);
             throw error;
         }
     }
