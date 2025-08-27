@@ -65,9 +65,9 @@ const NewsletterSubscription = () => {
                 <div className="newsletter-content">
                     {/* Texto del newsletter */}
                     <div className="newsletter-text">
-                        <h2 className="newsletter-title">Newsletter Subscription</h2>
+                        <h2 className="newsletter-title">Suscripción al boletín informativo</h2>
                         <p className="newsletter-subtitle">
-                            Get Latest Auto News & Updates Directly To Inbox
+                            Reciba las últimas noticias y actualizaciones de automóviles directamente en su bandeja de entrada
                         </p>
                     </div>
 
@@ -77,13 +77,13 @@ const NewsletterSubscription = () => {
                             <input
                                 type="email"
                                 className="email-input"
-                                placeholder="Write your email..."
+                                placeholder="Escribe tu correo electrónico..."
                                 value={email}
                                 onChange={handleEmailChange}
                                 required
                             />
                             <button type="submit" className="subscribe-btn" disabled={isSubmitting}>
-                                {isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE →'}
+                                {isSubmitting ? 'SUSCRIBIRSE...' : 'SUSCRIBIR →'}
                             </button>
                         </div>
                     </form>

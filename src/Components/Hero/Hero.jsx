@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FreeEstimateModal from "../FreeEstimateModal/FreeEstimateModal";
 import "./Hero.css";
 
 const Hero = () => {
@@ -9,6 +10,7 @@ const Hero = () => {
     ];
 
     const [current, setCurrent] = useState(0);
+    const [showEstimateModal, setShowEstimateModal] = useState(false);
 
     const nextSlide = () => {
         setCurrent((prev) => (prev + 1) % images.length);
@@ -16,6 +18,18 @@ const Hero = () => {
 
     const prevSlide = () => {
         setCurrent((prev) => (prev - 1 + images.length) % images.length);
+    };
+
+    const handleLearnMore = () => {
+        // Scroll to services section
+        const servicesSection = document.querySelector('.services-section');
+        if (servicesSection) {
+            servicesSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const handleFreeEstimate = () => {
+        setShowEstimateModal(true);
     };
 
     return (
@@ -27,16 +41,20 @@ const Hero = () => {
                 <div className="overlay">
                     <div className="hero-content">
                         <h1>
-                            We Make Your Vehicle <br />
-                            <span>In Good Shape</span>
+                            Hacemos tu vehículo<br />
+                            <span>En buena condición</span>
                         </h1>
                         <p>
                             Minim veniam quis nostrud exercitation ullamco laboris nisi
                             ex sed ipsum ea reprehend deritin voluptate.
                         </p>
                         <div className="hero-buttons">
-                            <button className="btn btn-primary">Learn More</button>
-                            <button className="btn btn-secondary">Free Estimate</button>
+                            <button className="btn btn-primary" onClick={handleLearnMore}>
+                                Más información
+                            </button>
+                            <button className="btn btn-secondary" onClick={handleFreeEstimate}>
+                                Presupuesto gratuito
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -49,6 +67,12 @@ const Hero = () => {
                     &#10095;
                 </button>
             </div>
+            
+            {/* Free Estimate Modal */}
+            <FreeEstimateModal 
+                isOpen={showEstimateModal}
+                onClose={() => setShowEstimateModal(false)}
+            />
         </section>
     );
 };

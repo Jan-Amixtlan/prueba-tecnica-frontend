@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Car, Building2, Users, UserCheck } from 'lucide-react';
+import { statsService } from '../../services/statsService';
 import './StatsSection.css';
 
 const StatsSection = () => {
@@ -10,9 +11,7 @@ const StatsSection = () => {
         customers: 0,
         technicians: 0
     });
-    const sectionRef = useRef(null);
-
-    const stats = [
+    const [stats, setStats] = useState([
         {
             id: 'vehicles',
             icon: <Car size={32} />,
@@ -45,7 +44,42 @@ const StatsSection = () => {
             suffix: '+',
             color: '#06B6D4'
         }
-    ];
+    ]);
+    const [isLoading, setIsLoading] = useState(false);
+    const sectionRef = useRef(null);
+
+    // Load stats from API
+    useEffect(() => {
+        const loadStats = async () => {
+            setIsLoading(true);
+            try {
+                const apiStats = await statsService.getStats();
+                
+                // Update stats with API data
+                setStats(prevStats => prevStats.map(stat => {
+                    switch (stat.id) {
+                        case 'vehicles':
+                            return { ...stat, finalNumber: apiStats.vehiclesRepaired || stat.finalNumber };
+                        case 'workshops':
+                            return { ...stat, finalNumber: apiStats.workshops || stat.finalNumber };
+                        case 'customers':
+                            return { ...stat, finalNumber: apiStats.customers || stat.finalNumber };
+                        case 'technicians':
+                            return { ...stat, finalNumber: apiStats.technicians || stat.finalNumber };
+                        default:
+                            return stat;
+                    }
+                }));
+            } catch (error) {
+                console.log('Using default stats due to API error:', error);
+                // Keep default values on error
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadStats();
+    }, []);
 
     // Intersection Observer to trigger animation
     useEffect(() => {
